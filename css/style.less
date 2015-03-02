@@ -9,16 +9,34 @@
 }
 
 @color-black-half: #757575;
+@color-gray: #3e3d3d;
 
-body, html {
+body, html, ul, li {
     padding: 0;
     margin: 0;
-    font-family: Helvetica, Arial, sans-serif;
+
+}
+
+ul {
+    list-style: none;
 }
 
 body {
+    font-family: Arial, Helvetica, sans-serif;
     //выпилить
     background: #aaa;
+}
+
+.align {
+    &__table{
+        height: 100%;
+        display: table;
+    }
+
+    &__cell{
+        display: table-cell;
+        vertical-align: middle;
+    }
 }
 
 .form {
@@ -31,7 +49,7 @@ body {
     box-sizing: border-box;
     position: relative;
 
-    &__name, &__surname, &__email, &__phone {
+    &__input {
         height: 42px;
         background: #FBFBFB;
         border: 1px solid #D8D8D8;
@@ -71,8 +89,7 @@ body {
     }
 
     &__tip {
-        font-family: ArialMT;
-        font-size: 12.5px;
+        font-size: 12px;
         color: @color-black-half;
         line-height: 15px;
         margin: 4px 0 0 0;
@@ -91,7 +108,6 @@ body {
         font-size: 18px;
         color: #FFFFFF;
         line-height: 21px;
-        // float: right;
         margin-right: 50px;
         display: table-caption;
         float: right;
@@ -106,32 +122,18 @@ body {
     &__wrapper {
         width: 600px;
         height: 445px;
-
-        //выпилить
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%,-50%);
+        position: relative;
     }
-}
 
-.bottom {
-    &__table{
+    &__bottom {
         width: 600px;
         height: 95px;
-        // opacity: 0.18;
         background: #FBFBFB;
         border-radius: 3px;
         border-top: 1px solid #ECECEC;
         position: absolute;
         bottom: 0;
         left: 0;
-        display: table;
-    }
-
-    &__cell{
-        display: table-cell;
-        vertical-align: middle;
     }
 }
 
@@ -139,4 +141,117 @@ body {
     position: absolute;
     bottom: 152px;
     left: 64px;
+}
+
+.candidate {
+    width: 204px;
+    height: 227px;
+    box-sizing: border-box;
+    background: #FFFFFF;
+    border-radius: 4px;
+    position: relative;
+    padding: 30px 15px 15px 15px;
+    box-sizing: border-box;
+    text-align: center;
+
+    &__photo {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        background: url(../img/man.png) 55% 20% no-repeat;
+        position: absolute;
+        top: -25px;
+        left: 0;
+        right: 0;
+        margin: 0 auto;
+    }
+
+    &__occupation {
+        font-family: Arial-BoldMT;
+        font-size: 13px;
+        color: @color-gray;
+        line-height: 17px;
+        margin-bottom: 5px;
+    }
+
+    &__description {
+        font-family: ArialMT;
+        font-size: 12px;
+        color: #4A4A4A;
+        line-height: 17px;
+        padding-bottom: 10px;
+        border-bottom: 1px solid #F3F3F3;
+    }
+
+    &__item {
+        width: 168px;
+        height: 25px;
+        background: #F0F0F0;
+        border: 1px dashed #E3E3E3;
+        box-sizing: border-box;
+        margin: 13px auto 0 auto;
+        padding: 0 5px;
+        text-align: left;
+    }
+
+    &__icon {
+        width: 17px;
+        height: 13px;
+        background-repeat: no-repeat;
+        display: inline-block;
+        vertical-align: middle;
+    }
+
+    &__scratch {
+        font-family: ArialMT;
+        font-size: 12px;
+        color: #D8D8D8;
+        line-height: 14px;
+        display: inline-block;
+        vertical-align: middle;
+        margin-left: 3px;
+        position: relative;
+
+        &:before, &:after {
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+        &:before {
+            content: '7857879879238473382';
+        }
+
+        &:after {
+            content: '3840298304928323230';
+        }
+    }
+
+    &__name {
+        .candidate__icon {
+            background-image: url(../img/icon-person-1.png);
+            background-size: 13px 13px;
+        }
+    }
+
+    &__phone {
+        .candidate__icon {
+            background-image: url(../img/icon-phone-1.png);
+            background-size: 13px 13px;
+        }
+    }
+
+    &__email {
+        .candidate__icon {
+            background-image: url(../img/icon-email-1.png);
+            background-size: 17px 13px;
+        }
+    }
+
+
+    //выпилить
+    position: absolute;
+    top: 50%;
+    left: 60%;
+    transform: translate(-50%,-50%);
 }
