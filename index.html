@@ -8,119 +8,123 @@
     <title>Form</title>
 </head>
 <body>
-    <div class="content">
-        <header class="header">
-            <div class="header__steps">
-                <div class="header__logo header__item"></div>
-                <div class="header__step header__item">Покупка резюме</div>
-            </div>
-            <div class="header__actions">
-                <div class="header__help header__item">Помощь</div>
-                <button class="header__signin header__item">Войти</button>
-            </div>
-        </header>
+    <div class="page"></div><!-- выпилить -->
 
-        <div class="caption">
-            <h1 class="caption__title">Хорошее время для знакомства</h1>
-            <h2 class="caption__description">Заполните информацию о себе, и нажмите кнопку «Продолжить»</h2>
-        </div>
+    <div class="overlay">
+        <div class="content">
+            <header class="header">
+                <div class="header__steps">
+                    <div class="header__logo header__item"></div>
+                    <div class="header__step header__item">Покупка резюме</div>
+                </div>
+                <div class="header__actions">
+                    <div class="header__help header__item">Помощь</div>
+                    <button class="header__signin header__item">Войти</button>
+                </div>
+            </header>
 
-        <div class="layout">
-            <ul class="navigation layout__col1">
-                <li class="navigation__item navigation__item--active">О себе</li>
-                <li class="navigation__item">О компании</li>
-                <li class="navigation__item">Оплата</li>
-            </ul>
-            <div class="form__wrapper layout__col2">
+            <div class="caption">
+                <h1 class="caption__title">Хорошее время для знакомства</h1>
+                <h2 class="caption__description">Заполните информацию о себе, и нажмите кнопку «Продолжить»</h2>
+            </div>
+
+            <div class="layout">
+                <ul class="navigation layout__col1">
+                    <li class="navigation__item navigation__item--active">О себе</li>
+                    <li class="navigation__item">О компании</li>
+                    <li class="navigation__item">Оплата</li>
+                </ul>
+                <div class="form__wrapper layout__col2">
+                    <form class="form">
+                        <label class="form__label">Имя<br/><input class="form__input form__half form__half--left" type="text"></label>
+                        <label class="form__label">Фамилия<br/><input class="form__input form__half" type="text"></label>
+                        <label class="form__label">Адрес электронной почты<br/><input class="form__input form__full" type="email"></label>
+                        <p class="form__tip">Мы используем ваши контакты для рекламных рассылок, и шлем спам.</p>
+                        <label class="form__label">Номер мобильного телефона<br/><input class="form__input form__phone form__full" type="tel" value="+7"><img class="label-icon label-icon--left" src="img/flag.png"></label>
+                        <p class="form__tip">Для связи с вами наших менеджеров. Номер нигде не публикуется и не передается.</p>
+                    </form>
+                    <div class="align__table form__bottom">
+                        <div class="align__cell">
+                            <button type="submit" class="form__submit form__submit--next">Продолжить</button>
+                        </div>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+                <div class="candidate__wrapper layout__col3">
+                    <div class="candidate">
+                        <div class="candidate__photo"></div>
+                        <div class="candidate__occupation">Менеджер по продажам автомобильных колес</div>
+                        <div class="candidate__description">Мужчина, 31 год, Москва</div>
+                        <ul class="candidate__contacts">
+                            <li class="candidate__name candidate__item">
+                                <div class="align__table">
+                                    <div class="align__cell">
+                                        <span class="candidate__icon"></span>
+                                        <span class="candidate__scratch">8902934898092807626</span>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="candidate__phone candidate__item">
+                                <div class="align__table">
+                                    <div class="align__cell">
+                                        <span class="candidate__icon"></span>
+                                        <span class="candidate__scratch">8902934898092807626</span>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="candidate__email candidate__item">
+                                <div class="align__table">
+                                    <div class="align__cell">
+                                        <span class="candidate__icon"></span>
+                                        <span class="candidate__scratch">8902934898092807626</span>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <img src="img/decor-writing.png" class="candidate__decor-writing">
+                </div>
+            </div>
+
+            <!-- <div class="form__wrapper">
                 <form class="form">
-                    <label class="form__label">Имя<br/><input class="form__input form__half form__half--left" type="text"></label>
-                    <label class="form__label">Фамилия<br/><input class="form__input form__half" type="text"></label>
-                    <label class="form__label">Адрес электронной почты<br/><input class="form__input form__full" type="email"></label>
-                    <p class="form__tip">Мы используем ваши контакты для рекламных рассылок, и шлем спам.</p>
-                    <label class="form__label">Номер мобильного телефона<br/><input class="form__input form__phone form__full" type="tel" value="+7"><img class="label-icon label-icon--left" src="img/flag.png"></label>
-                    <p class="form__tip">Для связи с вами наших менеджеров. Номер нигде не публикуется и не передается.</p>
+                    <label class="form__label">Тип<br/>компании<br/>
+                        <input class="form__radio" type="radio" name="company_type" value="employer"><p class="form__radiotip">Прямой работодатель</p>
+                        <input class="form__radio" type="radio" name="company_type" value="agency"><p class="form__radiotip">Кадровое агенство</p>
+                        <input class="form__radio" type="radio" name="company_type" value="outsource"><p class="form__radiotip">Аутсорс / Аутстаф</p>
+                    </label>
+                    <label class="form__label">Название компании и форма собственности<br/>
+                        <select class="form__select">
+                            <option value="ООО">ООО</option>
+                            <option value="ЗАО">ЗАО</option>
+                            <option value="ОАО">ОАО</option>
+                        </select>
+                        <input class="form__input form__full" type="text">
+                    </label>
+                    <p class="form__tip">Например, Яндекс.</p>
+                    <label class="form__label">Размер компании<br/>
+                        <input class="form__input form__half form__half--left" type="number" name="quantity" min="1" max="5">
+                    </label>
+                    <label class="form__label">Город<br/><input class="form__input form__half form__star" type="text" value="Москва">
+                        <img class="label-icon label-icon--left" src="img/star.png">
+                        <img class="label-icon label-icon--right" src="img/icon-target.png">
+                    </label>
+                    <label class="form__label">Сайт компании<br/><input class="form__input form__full" type="text" value="http://"></label>
+                    <p class="form__tip">Например, www.superjob.ru. Оставьте поле пустым, если сайта нет.</p>
+                    <label class="form__label">Описание деятельности<br/><input class="form__input form__full" type="text"></label>
+                    <p class="form__tip">Опишите, чем занимается ваша компания.</p>
+                    <label class="form__label">Ваша должность<br/><input class="form__input form__full" type="text"></label>
+                    <p class="form__tip">Кем вы работаете в компании?</p>
                 </form>
                 <div class="align__table form__bottom">
                     <div class="align__cell">
+                        <button type="submit" class="form__submit form__submit--skip">Пропустить шаг</button>
                         <button type="submit" class="form__submit form__submit--next">Продолжить</button>
                     </div>
                 </div>
                 <div class="clear"></div>
-            </div>
-            <div class="candidate__wrapper layout__col3">
-                <div class="candidate">
-                    <div class="candidate__photo"></div>
-                    <div class="candidate__occupation">Менеджер по продажам автомобильных колес</div>
-                    <div class="candidate__description">Мужчина, 31 год, Москва</div>
-                    <ul class="candidate__contacts">
-                        <li class="candidate__name candidate__item">
-                            <div class="align__table">
-                                <div class="align__cell">
-                                    <span class="candidate__icon"></span>
-                                    <span class="candidate__scratch">8902934898092807626</span>
-                                </div>
-                            </div>
-                        </li>
-                        <li class="candidate__phone candidate__item">
-                            <div class="align__table">
-                                <div class="align__cell">
-                                    <span class="candidate__icon"></span>
-                                    <span class="candidate__scratch">8902934898092807626</span>
-                                </div>
-                            </div>
-                        </li>
-                        <li class="candidate__email candidate__item">
-                            <div class="align__table">
-                                <div class="align__cell">
-                                    <span class="candidate__icon"></span>
-                                    <span class="candidate__scratch">8902934898092807626</span>
-                                </div>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-                <img src="img/decor-writing.png" class="candidate__decor-writing">
-            </div>
+            </div> -->
         </div>
-
-        <!-- <div class="form__wrapper">
-            <form class="form">
-                <label class="form__label">Тип<br/>компании<br/>
-                    <input class="form__radio" type="radio" name="company_type" value="employer"><p class="form__radiotip">Прямой работодатель</p>
-                    <input class="form__radio" type="radio" name="company_type" value="agency"><p class="form__radiotip">Кадровое агенство</p>
-                    <input class="form__radio" type="radio" name="company_type" value="outsource"><p class="form__radiotip">Аутсорс / Аутстаф</p>
-                </label>
-                <label class="form__label">Название компании и форма собственности<br/>
-                    <select class="form__select">
-                        <option value="ООО">ООО</option>
-                        <option value="ЗАО">ЗАО</option>
-                        <option value="ОАО">ОАО</option>
-                    </select>
-                    <input class="form__input form__full" type="text">
-                </label>
-                <p class="form__tip">Например, Яндекс.</p>
-                <label class="form__label">Размер компании<br/>
-                    <input class="form__input form__half form__half--left" type="number" name="quantity" min="1" max="5">
-                </label>
-                <label class="form__label">Город<br/><input class="form__input form__half form__star" type="text" value="Москва">
-                    <img class="label-icon label-icon--left" src="img/star.png">
-                    <img class="label-icon label-icon--right" src="img/icon-target.png">
-                </label>
-                <label class="form__label">Сайт компании<br/><input class="form__input form__full" type="text" value="http://"></label>
-                <p class="form__tip">Например, www.superjob.ru. Оставьте поле пустым, если сайта нет.</p>
-                <label class="form__label">Описание деятельности<br/><input class="form__input form__full" type="text"></label>
-                <p class="form__tip">Опишите, чем занимается ваша компания.</p>
-                <label class="form__label">Ваша должность<br/><input class="form__input form__full" type="text"></label>
-                <p class="form__tip">Кем вы работаете в компании?</p>
-            </form>
-            <div class="align__table form__bottom">
-                <div class="align__cell">
-                    <button type="submit" class="form__submit form__submit--skip">Пропустить шаг</button>
-                    <button type="submit" class="form__submit form__submit--next">Продолжить</button>
-                </div>
-            </div>
-            <div class="clear"></div>
-        </div> -->
     </div>
 
     <script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
