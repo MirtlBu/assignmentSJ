@@ -105,21 +105,38 @@ h1, h2 {
         margin: 9px 4px 0 0;
     }
 
+    &__message {
+        font-family: ArialMT, Arial, Helvetica, sans-serif;
+        font-size: 12px;
+        color: @color-black-half;
+        line-height: 15px;
+        margin: 4px 0 0 0;
+    }
+
     &__label {
         font-family: RobotoMedium, Arial, Helvetica, sans-serif;
         font-size: 14px;
         color: #000000;
         line-height: 16px;
         display: inline-block;
+        vertical-align: top;
         margin-top: 21px;
         position: relative;
-    }
 
-    &__tip {
-        font-size: 12px;
-        color: @color-black-half;
-        line-height: 15px;
-        margin: 4px 0 0 0;
+        &--error {
+
+            .form {
+                &__input {
+                    background: #FFF6F6;
+                    border: 1px solid #D53532;
+                }
+
+                &__message {
+                    font-size: 13px;
+                    color: #D23532;
+                }
+            }
+        }
     }
 
     &__radiotip {
@@ -140,12 +157,6 @@ h1, h2 {
         line-height: 21px;
         display: table-caption;
 
-        &--active {
-            cursor: pointer;
-            background: #398EED;
-            opacity: 1;
-        }
-
         &--skip {
             background-image: linear-gradient(-180deg, #F4F4F4 0%, #E9E9E9 100%);
             border: 1px solid #D7D7D7;
@@ -164,6 +175,12 @@ h1, h2 {
             float: right;
             margin-right: 50px;
             opacity: .54;
+        }
+
+         &--active {
+            cursor: pointer;
+            background: #398EED;
+            opacity: 1;
         }
     }
 
@@ -185,14 +202,14 @@ h1, h2 {
         border-radius: 3px;
         border-top: 1px solid #ECECEC;
         position: absolute;
-        bottom: 0;
+        bottom: -115px;
         left: 0;
     }
 }
 
 .label-icon {
     position: absolute;
-    top: 50%;
+    top: 33px;
 
     &--left {
         left: 3%;
@@ -526,6 +543,7 @@ div.fancy-select {
 .blurred {
     filter: blur(4px);
 }
+
 //выпилить
 .page {
     width: 100%;
