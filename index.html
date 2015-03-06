@@ -34,20 +34,49 @@
                     <li class="navigation__item">О компании</li>
                     <li class="navigation__item">Оплата</li>
                 </ul>
-                <div class="form__wrapper layout__col2">
-                    <form class="form">
-                        <label class="form__label">Имя<br/><input class="form__input form__half form__half--left" type="text"></label>
-                        <label class="form__label">Фамилия<br/><input class="form__input form__half" type="text"></label>
-                        <label class="form__label">Адрес электронной почты<br/><input class="form__input form__full" type="email"></label>
-                        <p class="form__tip">Мы используем ваши контакты для рекламных рассылок, и шлем спам.</p>
-                        <label class="form__label">Номер мобильного телефона<br/><input class="form__input form__phone form__full" type="tel" value="+7"><img class="label-icon label-icon--left" src="img/flag.png"></label>
-                        <p class="form__tip">Для связи с вами наших менеджеров. Номер нигде не публикуется и не передается.</p>
-                    </form>
-                    <div class="align__table form__bottom">
-                        <div class="align__cell">
-                            <button type="submit" class="form__submit form__submit--next">Продолжить</button>
+                <div class="form__wrapper layout__col2" ng-app="validationApp" ng-controller="mainController">
+                    <form name="userForm" class="form" ng-submit="submitForm()" novalidate>
+
+                        <label class="form__label" ng-class="{ 'form__label--error' : userForm.name.$invalid && !userForm.name.$pristine }">Имя
+                            <br/>
+                            <input class="form__input form__half form__half--left" type="text" ng-model="user.name" ng-minlength="2" ng-maxlength="15" name="name" required >
+                            <p ng-show="userForm.name.$error.minlength" class="form__message">Слишком короткое имя.</p>
+                            <p ng-show="userForm.name.$error.maxlength" class="form__message">Слишком длинное имя.</p>
+                            <!-- <p ng-show="!userForm.name.$pristine" class="form__message">Поле «Имя» не заполнено.</p> -->
+                        </label>
+
+                        <label class="form__label" ng-class="{ 'form__label--error' : userForm.surname.$invalid && !userForm.surname.$pristine }">Фамилия
+                            <br/>
+                            <input class="form__input form__half" type="text" ng-model="user.surname" ng-minlength="2" ng-maxlength="20" name="surname" required >
+                            <p ng-show="userForm.surname.$error.minlength" class="form__message">Слишком короткая фамилия.</p>
+                            <p ng-show="userForm.surname.$error.maxlength" class="form__message">Слишком длинная фамилия.</p>
+                            <!-- <p ng-show="!userForm.surname.$pristine" class="form__message">Поле «Фамилия» не заполнено.</p> -->
+                        </label>
+
+                        <label class="form__label" ng-class="{ 'form__label--error' : userForm.email.$invalid && !userForm.email.$pristine }">Адрес электронной почты
+                            <br/>
+                            <input class="form__input form__full" type="email" ng-model="user.email" name="email" required>
+                            <p ng-show="userForm.email.$invalid && !userForm.email.$pristine" class="form__message">Введите правильный email.</p>
+                            <p ng-show="userForm.email.$valid || userForm.email.$pristine" class="form__message">Мы используем ваши контакты для рекламных рассылок, и шлем спам.</p>
+                        </label>
+
+
+
+                        <label class="form__label" ng-class="{ 'form__label--error' : userForm.phone.$invalid && !userForm.phone.$pristine }">Номер мобильного телефона
+                            <br/>
+                            <img class="label-icon label-icon--left" src="img/flag.png">
+                            <input class="form__input form__phone form__full" type="tel" value="+7" ng-model="user.phone" ng-pattern="/^[0-9]{1,10}$/" name="phone" required>
+                            <p ng-show="userForm.phone.$error.pattern && !userForm.phone.$pristine" class="form__message">Введите правильный номер телефона.</p>
+                            <p ng-show="userForm.phone.$valid || userForm.phone.$pristine" class="form__message">Для связи с вами наших менеджеров. Номер нигде не публикуется и не передается.</p>
+                        </label>
+
+                        <div class="align__table form__bottom">
+                            <div class="align__cell">
+                                <button type="submit" class="form__submit form__submit--next" ng-class="{'form__submit--active' : !userForm.$invalid}" ng-disabled="userForm.$invalid">Продолжить</button>
+                            </div>
                         </div>
-                    </div>
+                    </form>
+
                     <div class="clear"></div>
                 </div>
                 <div class="candidate__wrapper layout__col3">
@@ -101,7 +130,7 @@
                         </select>
                         <input class="form__input form__full" type="text">
                     </label>
-                    <p class="form__tip">Например, Яндекс.</p>
+                    <p class="form__message">Например, Яндекс.</p>
                     <label class="form__label">Размер компании<br/>
                         <input class="form__input form__half form__half--left" type="number" name="quantity" min="1" max="5">
                     </label>
@@ -110,11 +139,11 @@
                         <img class="label-icon label-icon--right" src="img/icon-target.png">
                     </label>
                     <label class="form__label">Сайт компании<br/><input class="form__input form__full" type="text" value="http://"></label>
-                    <p class="form__tip">Например, www.superjob.ru. Оставьте поле пустым, если сайта нет.</p>
+                    <p class="form__message">Например, www.superjob.ru. Оставьте поле пустым, если сайта нет.</p>
                     <label class="form__label">Описание деятельности<br/><input class="form__input form__full" type="text"></label>
-                    <p class="form__tip">Опишите, чем занимается ваша компания.</p>
+                    <p class="form__message">Опишите, чем занимается ваша компания.</p>
                     <label class="form__label">Ваша должность<br/><input class="form__input form__full" type="text"></label>
-                    <p class="form__tip">Кем вы работаете в компании?</p>
+                    <p class="form__message">Кем вы работаете в компании?</p>
                 </form>
                 <div class="align__table form__bottom">
                     <div class="align__cell">
@@ -128,7 +157,8 @@
     </div>
 
     <script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
-    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+    <script type="text/javascript" src="js/angular.min.js"></script>
+    // <!-- <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script> -->
     <script type="text/javascript" src="js/fancySelect.js"></script>
     <script type="text/javascript" src="js/script.js"></script>
 </body>
