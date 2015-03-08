@@ -11,7 +11,7 @@
     <div class="page"></div><!-- выпилить -->
 
     <div class="overlay">
-        <div class="content">
+        <div class="content" ng-app="popupApp">
             <header class="header">
                 <div class="header__steps">
                     <div class="header__logo header__item"></div>
@@ -23,9 +23,9 @@
                 </div>
             </header>
 
-            <div class="caption">
-                <h1 class="caption__title">Хорошее время для знакомства</h1>
-                <h2 class="caption__description">Заполните информацию о себе, и нажмите кнопку «Продолжить»</h2>
+            <div class="caption" ng-controller="captionController">
+                <h1 class="caption__title" ng-bind="current.title"></h1>
+                <h2 class="caption__description" ng-bind="current.desc"></h2>
             </div>
 
             <div class="layout">
@@ -34,38 +34,32 @@
                     <li class="navigation__item">О компании</li>
                     <li class="navigation__item">Оплата</li>
                 </ul>
-                <div class="form__wrapper layout__col2" ng-app="validationApp" ng-controller="mainController">
+                <div class="form__wrapper layout__col2" ng-controller="validationController">
                     <form name="userForm" class="form" ng-submit="submitForm()" novalidate>
 
                         <label class="form__label" ng-class="{ 'form__label--error' : userForm.name.$invalid && !userForm.name.$pristine }">Имя
                             <br/>
-                            <input class="form__input form__half form__half--left" type="text" ng-model="user.name" ng-minlength="2" ng-maxlength="15" name="name" required >
-                            <p ng-show="userForm.name.$error.minlength" class="form__message">Слишком короткое имя.</p>
-                            <p ng-show="userForm.name.$error.maxlength" class="form__message">Слишком длинное имя.</p>
-                            <!-- <p ng-show="!userForm.name.$pristine" class="form__message">Поле «Имя» не заполнено.</p> -->
+                            <input class="form__input form__half form__half--left" type="text" ng-model="user.name" ng-pattern="/^[a-zA-zа-яА-Я-]{1,15}$/" ng-model-options="{ updateOn: 'blur' }" name="name" required >
+                            <p ng-show="userForm.name.$error.pattern && !userForm.name.$pristine" class="form__message">Только буквы, не более 15 символов.</p>
                         </label>
 
                         <label class="form__label" ng-class="{ 'form__label--error' : userForm.surname.$invalid && !userForm.surname.$pristine }">Фамилия
                             <br/>
-                            <input class="form__input form__half" type="text" ng-model="user.surname" ng-minlength="2" ng-maxlength="20" name="surname" required >
-                            <p ng-show="userForm.surname.$error.minlength" class="form__message">Слишком короткая фамилия.</p>
-                            <p ng-show="userForm.surname.$error.maxlength" class="form__message">Слишком длинная фамилия.</p>
-                            <!-- <p ng-show="!userForm.surname.$pristine" class="form__message">Поле «Фамилия» не заполнено.</p> -->
+                            <input class="form__input form__half" type="text" ng-model="user.surname" ng-pattern="/^[a-zA-zа-яА-Я-]{1,20}$/" ng-model-options="{ updateOn: 'blur' }" name="surname" required >
+                            <p ng-show="userForm.surname.$error.pattern && !userForm.surname.$pristine" class="form__message">Только буквы, не более 15 символов.</p>
                         </label>
 
                         <label class="form__label" ng-class="{ 'form__label--error' : userForm.email.$invalid && !userForm.email.$pristine }">Адрес электронной почты
                             <br/>
-                            <input class="form__input form__full" type="email" ng-model="user.email" name="email" required>
+                            <input class="form__input form__full" type="email" ng-model="user.email" ng-model-options="{ updateOn: 'blur' }" name="email" required>
                             <p ng-show="userForm.email.$invalid && !userForm.email.$pristine" class="form__message">Введите правильный email.</p>
                             <p ng-show="userForm.email.$valid || userForm.email.$pristine" class="form__message">Мы используем ваши контакты для рекламных рассылок, и шлем спам.</p>
                         </label>
 
-
-
                         <label class="form__label" ng-class="{ 'form__label--error' : userForm.phone.$invalid && !userForm.phone.$pristine }">Номер мобильного телефона
                             <br/>
                             <img class="label-icon label-icon--left" src="img/flag.png">
-                            <input class="form__input form__phone form__full" type="tel" value="+7" ng-model="user.phone" ng-pattern="/^[0-9]{1,10}$/" name="phone" required>
+                            <input class="form__input form__phone form__full" type="tel" ng-model="user.phone" ng-model-options="{ updateOn: 'blur' }" ng-pattern="/^\+[0-9]{11,11}$/" name="phone" required>
                             <p ng-show="userForm.phone.$error.pattern && !userForm.phone.$pristine" class="form__message">Введите правильный номер телефона.</p>
                             <p ng-show="userForm.phone.$valid || userForm.phone.$pristine" class="form__message">Для связи с вами наших менеджеров. Номер нигде не публикуется и не передается.</p>
                         </label>
